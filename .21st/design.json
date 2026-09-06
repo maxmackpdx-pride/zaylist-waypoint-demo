@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "project": {
+    "name": "app-builder-workspace",
+    "productType": null,
+    "stack": [
+      "react",
+      "tailwind-v4",
+      "vite"
+    ]
+  },
+  "sources": {
+    "tokens": [],
+    "components": [
+      "src/components/ui"
+    ],
+    "assets": [
+      "public/brand"
+    ],
+    "instructions": [
+      "AGENTS.md"
+    ]
+  },
+  "design": {
+    "colorMode": "unknown",
+    "colors": {},
+    "typography": {},
+    "spacing": {},
+    "radius": {},
+    "shadows": {},
+    "motion": {},
+    "density": "unknown"
+  },
+  "components": {
+    "installed": [
+      "button",
+      "card",
+      "dialog",
+      "edit-profile-dialog",
+      "input",
+      "label",
+      "liquid-glass-button",
+      "meeting-scheduler",
+      "profile-card",
+      "switch",
+      "textarea"
+    ],
+    "preferredPrimitives": [
+      "radix-ui"
+    ],
+    "patterns": [
+      "grouped-notification-toggles",
+      "feed-composer"
+    ]
+  },
+  "constraints": {
+    "must": [
+      "Reuse Zaylist chrome: OLED, Barlow Condensed, FilterChip, SiteHeader, AppDock",
+      "Two worlds: vanilla lime vs ZayDark red, never share lock-screen copy"
+    ],
+    "avoid": [
+      "Generic shadcn Card as the page shell",
+      "Emoji in chrome",
+      "Exact pins, faces, or kink nouns on lock screens"
+    ]
+  },
+  "decisions": [
+    {
+      "id": "alerts-grouped-toggles",
+      "source": "21st component 22225 Grouped Notification Toggles",
+      "choice": "Keep the category + row-control pattern. Rebuild in Zaylist tokens with OFF/APP/PUSH channels, paper lock-screen preview, ZayDark isolation."
+    },
+    {
+      "id": "feed-composer",
+      "source": "21st component 8721 Composer Input",
+      "choice": "Collapsed bar expands into dest chips + textarea + BACK/POST. No rich-text toolbar. OLED, FilterChip destinations, undo after BACK OUT."
+    },
+    {
+      "id": "looking-board",
+      "source": "project FilterChip + 21st grouped-toggles density (22225)",
+      "choice": "Looking is a room, not a pan feed. WHO is the door. Empty, loading, error, grid+list, MORE on long chip rows. NO CHASERS and WHO'S GOING stay first-class."
+    }
+  ],
+  "evidence": [
+    {
+      "fact": "components.installed",
+      "source": "src/components/ui"
+    },
+    {
+      "fact": "project.instructions",
+      "source": "AGENTS.md"
+    },
+    {
+      "fact": "project.stack:react",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:tailwind-v4",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:vite",
+      "source": "package.json"
+    }
+  ],
+  "generatedAt": "2026-09-06T11:11:19.128Z"
+}

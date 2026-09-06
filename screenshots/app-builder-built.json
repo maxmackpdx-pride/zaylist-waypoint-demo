@@ -1,0 +1,41 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Zaylist Living Map",
+      "hasCanvas": false,
+      "bodyTextLen": 716,
+      "bodyTextHash": "67ede7fa8cfea059b0f73cbf97ee7c1466d0d471ffb164a96681e71d22fb867a",
+      "bodyTextPrefix": "ZAYLIST LIVING MAP FRI 9:47 PM DEMO CLOCK NOW TONIGHT LATER THIS",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Zaylist Living Map",
+      "hasCanvas": false,
+      "bodyTextLen": 580,
+      "bodyTextHash": "0ae21db78081a322bef8ec2df1d4f8b0a0117c180505d4e63b769dfee45dd568",
+      "bodyTextPrefix": "ZAYLIST LIVING MAP FRI 9:47 PM DEMO CLOCK NOW TONIGHT LATER THIS",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": true,
+  "baselineReasons": [
+    "desktop: body text changed (844 -> 716 chars, hash mismatch)",
+    "mobile: body text changed (708 -> 580 chars, hash mismatch)"
+  ]
+}

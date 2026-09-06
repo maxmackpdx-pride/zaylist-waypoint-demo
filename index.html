@@ -1,101 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Zaylist waypoints</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
-<style>
-  :root { --bg:#050506; --fg:#eee; --muted:#8a8a8a; }
-  * { box-sizing: border-box; }
-  html, body { margin:0; background:var(--bg); color:var(--fg); font-family:"Barlow Condensed", "Arial Narrow", sans-serif; }
-  body { padding: 28px 22px 80px; }
-  h1 { margin:0; font-size: clamp(2rem, 6vw, 3.4rem); letter-spacing:-.03em; text-transform:uppercase; line-height:.9; }
-  .kicker { font-family:"JetBrains Mono", ui-monospace, monospace; font-size:11px; letter-spacing:.22em; color:#00ffff; text-transform:uppercase; margin-bottom:10px; }
-  .lede { max-width: 42rem; color:var(--muted); font-family: system-ui, sans-serif; font-size:14px; line-height:1.5; margin: 12px 0 28px; }
-  section { margin: 36px 0; }
-  h2 { margin:0 0 14px; font-size:1.15rem; letter-spacing:.16em; text-transform:uppercase; color:#ccff00; }
-  .row { display:flex; flex-wrap:wrap; gap: 28px 22px; align-items:flex-end; }
-  .cell { display:flex; flex-direction:column; align-items:center; gap:8px; min-width:72px; }
-  .cell b { font-family:"JetBrains Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.14em; color:var(--muted); font-weight:500; text-transform:uppercase; }
-  .board { background:#0a0a0c; border:1px solid #222; border-radius:18px; padding:22px 18px 16px; }
-  .wp { line-height:0; transform-origin:50% 100%; }
-  .wp-svg { display:block; overflow:visible; }
-  .wp-glow-ring { opacity:.28; animation: wp-glow 3.8s ease-in-out infinite; }
-  .wp.is-selected .wp-glow-ring { opacity:.45; }
-  @keyframes wp-glow { 0%,100%{opacity:.18} 50%{opacity:.42} }
-  @media (prefers-reduced-motion: reduce) { .wp-glow-ring { animation:none; opacity:.22; } }
-  .note { font-family: system-ui, sans-serif; font-size:13px; color:var(--muted); max-width:40rem; }
-</style>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="refresh" content="0; url=specimen/index.html"/>
+  <title>Zaylist waypoints</title>
+  <link rel="canonical" href="specimen/index.html"/>
 </head>
 <body>
-<p class="kicker">Zaylist · map contract</p>
-<h1>Waypoint family</h1>
-<p class="lede">One SVG shell. Beacon, pointer, optional scoop, white glyph, slow glow. Time lives in the overlapping disc and stays white. This page is the specimen. If the map disagrees, this page wins.</p>
-<section><h2>Sizes · 24 / 32 / 44</h2><div class="board"><div class="row" id="sizes"></div></div><p class="note">Rest zoom under 16 = 24. Rest zoom 16+ = 32. Selected = 44.</p></section>
-<section><h2>Scoop · time overlap</h2><div class="board"><div class="row" id="scoops"></div></div></section>
-<section><h2>Eventz · day color</h2><div class="board"><div class="row" id="days"></div></div></section>
-<section><h2>18+ / sex-positive</h2><div class="board"><div class="row" id="plus"></div></div></section>
-<section><h2>Placez</h2><div class="board"><div class="row" id="places"></div></div></section>
-<section><h2>Boards</h2><div class="board"><div class="row" id="boards"></div></div></section>
-<section><h2>ZayDark hosting</h2><div class="board"><div class="row" id="hosts"></div></div></section>
-<section><h2>Venue bloom</h2><div class="board"><div class="row" id="bloom"></div></div></section>
-<script>
-const COLOR={eventz:"#ccff00",hauz:"#00ffff",zenegade:"#ff2400",afterz:"#ffee00",mizzed:"#ff00cc",carpool:"#00ffff",bar:"#ff00cc",club:"#8800ff",venue:"#00ffff",park:"#39ff14",outz:"#ff6600",cafe:"#39ff14",shop:"#ffb23d",bath:"#0044ff",adult:"#ff00cc",gigz:"#ff6600",sells:"#39ff14",giftz:"#8800ff",plus:"#ff2400","host-home":"#ff2400","host-hotel":"#ff2400","host-car":"#ff2400","host-hole":"#ff2400","host-group":"#ff2400","dark-room":"#ff2400",sling:"#ff2400",booth:"#ff2400",crawl:"#ff2400"};
-const DAY={mon:"#8800ff",tue:"#0044ff",wed:"#ffee00",thu:"#00ffff",fri:"#ff00cc",sat:"#39ff14",sun:"#ff6600"};
-const P=(d)=>d;
-const G={
-eventz:P('<rect x="5" y="6.5" width="14" height="13.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="currentColor" d="M5 6.5h14v4H5z"/><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M8 4.5v4M16 4.5v4"/>'),
-hauz:P('<path fill="currentColor" d="M3.5 11.2 12 3.8l8.5 7.4v9.5H14v-6H10v6H3.5z"/>'),
-zenegade:P('<path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" d="M6 6h12L6 18h12"/><path stroke="#00ffff" stroke-width="1.6" d="M5 15.5 19 8.5"/>'),
-afterz:P('<path fill="currentColor" d="M13.2 4.2a7.4 7.4 0 1 0 6.4 11.2 6.2 6.2 0 1 1-6.4-11.2z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M14 8h6m0 0-2.2-2.2M20 8l-2.2 2.2"/>'),
-mizzed:P('<path fill="currentColor" d="M3.5 6.2h10.2c.9 0 1.6.7 1.6 1.6v6.2c0 .9-.7 1.6-1.6 1.6H8.2L4.4 18.8V15.6H3.5c-.9 0-1.6-.7-1.6-1.6V7.8c0-.9.7-1.6 1.6-1.6z"/>'),
-carpool:P('<path fill="currentColor" d="M6.2 9.2h11.6l1.7 3.2v5.2H16v-1.6H8v1.6H4.5v-5.2z"/><circle cx="7.4" cy="17.6" r="1.5" fill="#050506"/><circle cx="16.6" cy="17.6" r="1.5" fill="#050506"/>'),
-bar:P('<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M6 4.8h12L12 13.2 6 4.8z"/><path stroke="currentColor" stroke-width="1.8" d="M12 13.2V20M8.5 20h7"/>'),
-club:P('<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/>'),
-venue:P('<path fill="currentColor" d="M4.5 19.5V8.2L12 4.2l7.5 4v11.3H4.5z"/><path fill="#050506" d="M10.2 12.2h3.6v7.3h-3.6z"/>'),
-park:P('<path fill="currentColor" d="M12 3.4 16.8 12H7.2zM12 7l6 9.2H6zM11 16.2h2V21h-2z"/>'),
-outz:P('<path fill="currentColor" d="m3.2 16.8 5.4-7.4 3.6 4.8L16.4 9l4.4 7.8z"/>'),
-cafe:P('<path fill="none" stroke="currentColor" stroke-width="1.8" d="M5.5 9.2h10.2v6.2c0 2.2-1.8 3.6-4 3.6H9.5c-2.2 0-4-1.4-4-3.6z"/>'),
-shop:P('<path fill="none" stroke="currentColor" stroke-width="1.8" d="M7.2 9.2 8.4 20h7.2l1.2-10.8zM9 9.2c0-2.2 1.2-4 3-4s3 1.8 3 4"/>'),
-bath:P('<path fill="currentColor" d="M12 4.2c3.6 4.4 6.6 7.4 6.6 10.2A6.6 6.6 0 0 1 12 21a6.6 6.6 0 0 1-6.6-6.6C5.4 11.6 8.4 8.6 12 4.2z"/>'),
-adult:P('<path fill="none" stroke="currentColor" stroke-width="1.8" d="M7.2 9.2 8.4 20h7.2l1.2-10.8z"/>'),
-gigz:P('<rect x="5" y="6.5" width="14" height="13.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="currentColor" d="M5 6.5h14v4H5z"/>'),
-sells:P('<path fill="currentColor" d="M4.6 10.2h14.8v9.4H4.6zM4.2 7.4h15.6l-1.4 2.8H5.6z"/>'),
-giftz:P('<rect x="4.5" y="10.2" width="15" height="9.4" rx="1" fill="currentColor"/>'),
-plus:P('<text x="12" y="16.2" text-anchor="middle" fill="currentColor" font-size="9.2" font-weight="800" font-family="Barlow Condensed,sans-serif">18+</text>'),
-"host-home":P('<path fill="currentColor" d="M5 19.4V9.6L12 4.4l7 5.2v9.8H14v-5.4H10v5.4z"/>'),
-"host-hotel":P('<path fill="currentColor" d="M4.4 14.2h15.2v5.2H4.4zM6 10.4c0-1.6 1.2-2.8 2.8-2.8h2.2c1.6 0 2.8 1.2 2.8 2.8v3.8H6z"/>'),
-"host-car":P('<path fill="currentColor" d="M5.8 10h12.4l1.8 3.4v5H16.2v-1.4H7.8V18.4H4v-5z"/>'),
-"host-hole":P('<rect x="4.4" y="6.4" width="15.2" height="11.2" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/>'),
-"host-group":P('<circle cx="8.4" cy="8.4" r="2.4" fill="currentColor"/><circle cx="15.6" cy="8.4" r="2.4" fill="currentColor"/>'),
-"dark-room":P('<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2.2" d="M7.2 12h9.6"/>'),
-sling:P('<path fill="none" stroke="currentColor" stroke-width="2" d="M5 19.4 12 4.6l7 14.8M8.4 14.6h7.2"/>'),
-booth:P('<rect x="5" y="5" width="14" height="14" rx="2.4" fill="none" stroke="currentColor" stroke-width="2"/>'),
-crawl:P('<circle cx="16.6" cy="8.2" r="2.1" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="1.8" d="M15.2 10.2 10.6 13.4 5.8 13.2"/>')
-};
-function escapeXml(v){return String(v).replace(/[&<>]/g,ch=>({"&":"&"+"amp;","<":"&"+"lt;",">":"&"+"gt;"}[ch]));}
-function waypointHtml(opts){
-  const D=opts.size??32,color=opts.color??COLOR[opts.id],scoop=opts.scoop,pad=Math.round(D*0.22),sw=Math.max(2,D*0.085),cx=pad+D/2,cy=pad+D/2,r=D/2-sw/2,scoopR=D*0.3,scoopCy=scoop?cy+r+scoopR*0.55:cy,attachY=scoop?scoopCy+scoopR*0.2:cy+r*0.62,tipY=(scoop?scoopCy+scoopR:cy+r)+D*0.34,tipW=D*0.3,w=Math.ceil(pad*2+D),h=Math.ceil(tipY+pad*0.4),fid='wg'+opts.id+D+(scoop?'s':'')+(opts.bloom?'b':'')+Math.random().toString(36).slice(2,6),mark=D*0.58,markX=cx-mark/2,markY=cy-mark/2,glowW=sw*1.6,scoopStroke=Math.max(2,sw*0.85);
-  const bloom=opts.bloom?'<defs><linearGradient id="'+fid+'b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff00cc"/><stop offset=".25" stop-color="#ccff00"/><stop offset=".5" stop-color="#00ffff"/><stop offset=".75" stop-color="#8800ff"/><stop offset="1" stop-color="#ff00cc"/></linearGradient></defs>':'';
-  const ring=opts.bloom?'url(#'+fid+'b)':color;
-  const scoopCircle=scoop?'<circle cx="'+cx+'" cy="'+scoopCy+'" r="'+scoopR+'" fill="#050506" stroke="'+ring+'" stroke-width="'+scoopStroke+'"/><text x="'+cx+'" y="'+(scoopCy+1)+'" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Barlow Condensed,Arial Narrow,sans-serif" font-size="'+Math.max(8,D*0.26)+'" font-weight="800">'+escapeXml(scoop)+'</text>':'';
-  const glyph=G[opts.id]||G.eventz;
-  const cls=['wp',opts.selected?'is-selected':'',scoop?'has-scoop':'',opts.bloom?'is-bloom':''].filter(Boolean).join(' ');
-  return '<div class="'+cls+'" style="width:'+w+'px;height:'+h+'px"><svg class="wp-svg" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">'+bloom+'<polygon points="'+(cx-tipW)+','+attachY+' '+(cx+tipW)+','+attachY+' '+cx+','+tipY+'" fill="'+ring+'"/><circle class="wp-glow-ring" cx="'+cx+'" cy="'+cy+'" r="'+(r+sw)+'" fill="none" stroke="'+ring+'" stroke-width="'+glowW+'"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="#050506" stroke="'+ring+'" stroke-width="'+sw+'"/><g transform="translate('+markX+' '+markY+') scale('+(mark/24)+')" fill="#fff" stroke="#fff" color="#fff">'+glyph+'</g>'+scoopCircle+'</svg></div>';
-}
-function cell(html,label){return '<div class="cell">'+html+'<b>'+label+'</b></div>';}
-function mount(id,items){document.getElementById(id).innerHTML=items.map(([o,l])=>cell(waypointHtml(o),l)).join('');}
-mount('sizes',[[{id:'eventz',color:DAY.thu,size:24,scoop:'10P'},'24 rest'],[{id:'eventz',color:DAY.thu,size:32,scoop:'10P'},'32 close'],[{id:'eventz',color:DAY.thu,size:44,scoop:'10P',selected:true},'44 selected']]);
-mount('scoops',[[{id:'eventz',color:DAY.fri,size:32,scoop:'9P'},'9P'],[{id:'eventz',color:DAY.sat,size:32,scoop:'12A'},'12A'],[{id:'carpool',size:32,scoop:'9/6'},'leave 9/6'],[{id:'afterz',size:32,scoop:'2A'},'AfterZ 2A']]);
-mount('days',['mon','tue','wed','thu','fri','sat','sun'].map(d=>[{id:'eventz',color:DAY[d],size:32,scoop:'10P'},d]));
-mount('plus',[[{id:'plus',size:24},'24'],[{id:'plus',size:32,scoop:'11P'},'32'],[{id:'plus',size:44,selected:true,scoop:'11P'},'44']]);
-mount('places',['hauz','bar','club','venue','park','outz','cafe','shop','bath','adult'].map(id=>[{id,size:32},id]));
-mount('boards',['zenegade','afterz','mizzed','carpool','gigz','sells','giftz'].map(id=>[{id,size:32,scoop:id==='carpool'?'9/6':(id==='afterz'||id==='zenegade'?'1A':undefined)},id]));
-mount('hosts',['host-home','host-hotel','host-car','host-hole','host-group','dark-room','sling','booth','crawl'].map(id=>[{id,size:32},id.replace('host-','')]));
-mount('bloom',[[{id:'venue',size:32},'plain'],[{id:'venue',size:32,bloom:true},'bloom 2+ nights'],[{id:'venue',size:44,bloom:true,selected:true},'selected bloom']]);
-</script>
+  <p><a href="specimen/index.html">Waypoint specimen</a></p>
+  <p>Living map is the Vite app in this repo. Run <code>npm install && npm run dev</code>.</p>
 </body>
 </html>

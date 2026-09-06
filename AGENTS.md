@@ -1,11 +1,12 @@
-# Agents
+# Agents (Codex, Claude, Grok, humans)
 
-You are editing the **Zaylist waypoint family**.
+This repo is the **Zaylist living map** demo.
 
-1. Read `README.md` first. That file is the contract.
-2. `index.html` is the specimen. Keep it a **single file**. No `fetch()`, no `chunks/`.
-3. Match the living-map factory in `src/lib/waypoints.ts` when that app is in scope.
-4. Do not invent a second pin language for ZayDark. Same shell, rose-red, room glyphs.
-5. Scoop time is white. Overlap of beacon + scoop must still read as two discs.
+1. Read `README.md` first. That is the product contract.
+2. **Tucker’s ask in this repo overrides Foundation.** If `zaylist-foundation-library` tokens, card rules, or an old guide disagree with what is built or asked here, follow this repo.
+3. Waypoint visual source of truth: `public/waypoint-specimen.html` (also the old root `index.html` on github pages-style preview).
+4. Do not invent a second pin language for ZayDark. Same waypoint shell, rose-red, room glyphs. Faces are avatars, not pins.
+5. Age search starts at **18**.
+6. Two worlds: vanilla Zaylist and ZayDark never share notification channels or lock-screen copy.
 
-Preview: open `index.html`. htmlpreview only works because this file is self-contained.
+Run: `npm install` then `npm run dev` (port 8080).

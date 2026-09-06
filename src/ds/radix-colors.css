@@ -1,0 +1,68 @@
+/* ============================================================
+   Zaylist / Radix Colors migration layer
+   Default: Radix Colors 3 dark scales.
+   Undo: set data-color-system="legacy" on the document root.
+
+   The legacy palette remains complete in colors.css. This file only
+   rebinds the public semantic tokens, so undo is immediate and lossless.
+   Radix step roles: 1 app, 2 subtle, 3 UI, 4 hover, 6-8 borders,
+   9 solid, 10 solid hover, 11 low-contrast text, 12 high-contrast text.
+   ============================================================ */
+
+:root:not([data-color-system="legacy"]) {
+  color-scheme: dark;
+
+  /* Radix Gray Dark */
+  --gray-1:var(--z-black, #050506); --gray-2:#111113; --gray-3:#18191b; --gray-4:#212225;
+  --gray-5:#313131; --gray-6:#3a3a3a; --gray-7:#484848; --gray-8:#606060;
+  --gray-9:#6e6e6e; --gray-10:#7b7b7b; --gray-11:#b4b4b4; --gray-12:#eeeeee;
+
+  /* Map earth + streets. Radix Gray Dark.
+     Official gray-1 is #111113. Map black may drop 2 steps, not to OLED #000. */
+  --map-earth: #0a0a0c;
+  --map-water: var(--gray-3);
+  --map-street-minor: var(--gray-6);
+  --map-street-mid: var(--gray-8);
+  --map-street-major: var(--gray-10);
+
+  /* Radix accent dark scales remain available for ordinary UI states and
+     future components. They do not replace Zaylist's owned neon palette. */
+  --radix-lime-9:#bdee63; --radix-lime-10:#d4ff70; --radix-lime-11:#bde56c;
+  --radix-cyan-9:#00a2c7; --radix-cyan-10:#23afd0; --radix-cyan-11:#4ccce6;
+  --radix-pink-9:#d6409f; --radix-pink-10:#de51a8; --radix-pink-11:#ff8dcc;
+  --radix-orange-9:#f76b15; --radix-orange-10:#ff801f; --radix-orange-11:#ffa057;
+  --radix-violet-9:#6e56cf; --radix-violet-10:#7d66d9; --radix-violet-11:#baa7ff;
+  --radix-red-9:#e5484d; --radix-red-10:#ec5d5e; --radix-red-11:#ff9592;
+  --radix-green-9:#30a46c; --radix-green-10:#33b074; --radix-green-11:#3dd68c;
+  --radix-blue-9:#0090ff; --radix-blue-10:#3b9eff; --radix-blue-11:#70b8ff;
+  --radix-yellow-9:#ffe629; --radix-yellow-10:#ffff57; --radix-yellow-11:#f5e147;
+
+  /* Neutral roles */
+  --ink-1000:var(--z-black, #050506);
+  --ink-900:var(--gray-1);
+  --ink-850:var(--gray-2);
+  --ink-800:var(--gray-3);
+  --ink-750:var(--gray-4);
+  --ink-border-faint:var(--gray-6);
+  --ink-border:var(--gray-7);
+  --ink-border-strong:var(--gray-8);
+  --panel-ink:var(--z-black, #050506);
+  --panel-band:var(--gray-2);
+  --panel-card:var(--gray-3);
+  --panel-card-2:var(--gray-4);
+  --panel-border:var(--gray-6);
+  --panel-border-2:var(--gray-7);
+  --text-hi:var(--gray-12);
+  --text-body:var(--gray-12);
+  --text:var(--gray-12);
+  --text-body-muted:var(--gray-11);
+  --text-lo:var(--gray-11);
+  --text-faint:var(--gray-10);
+  /* Tucker-owned exception: unavailable text remains dark neon red. */
+  --text-disabled:#8c1400;
+
+  /* Brand chroma intentionally inherits from colors.css: canonical Zaylist
+     neons, day colors, board accents, gradients, flags, focus, and links.
+     Radix composes the neutral/interface system around that custom palette;
+     it does not desaturate the identity layer. */
+}

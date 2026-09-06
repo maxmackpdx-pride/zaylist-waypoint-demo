@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Zaylist",
+      "hasCanvas": false,
+      "bodyTextLen": 1109,
+      "bodyTextHash": "01a715cefdcdd546c2ed7c17218802fb5558180f24c7fdd0f4b7dcb4e292f436",
+      "bodyTextPrefix": "Loading the city… LOCATE KEY + Home Eventz Placez Outz Z/ Commun",
+      "horizontalOverflow": false,
+      "consoleErrors": [
+        "A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:\n\n- A server/client branch `if (typeof window !== 'undefined')`.\n- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.\n- Date formatting in a user's locale which doesn't match the server.\n- External changing data without sending a snapshot of it along with the HTML.\n- Invalid HTML tag nesting.\n\nIt can also happen if the client has a browser extension installed which messes with the HTML before React loaded.\n\n%s%s https://react.dev/link/hydration-mismatch \n\n  ...\n    <SafeFragment>\n      <SafeFragment fallback={null}>\n        <CatchBoundary getResetKey={function getResetKey} errorComponent={function AppErrorComponent} ...>\n          <SafeFragment fallback={function fallback}>\n            <MatchInnerImpl match={{id:\"//\",ssr:true, ...}}>\n              <Lazy>\n                <LivingMap>\n                  <div className=\"relative h...\">\n                    <MapPanel>\n                    <SiteHeader>\n                    <header>\n                    <div>\n                    <NightDesk open={true} page=\"map\" onPage={function bound dispatchSetState} ...>\n                      <button>\n                      <aside className=\"night-desk...\">\n                        <div className=\"pointer-ev...\" style={{--c:\"var(-...\"}}>\n                          <div className=\"flex h-ful...\">\n                            <div className=\"flex items...\">\n                              <label className=\"relative m...\">\n                                <Search>\n                                <input\n                                  value=\"\"\n                                  onChange={function onChange}\n                                  placeholder=\"Search events, venues, DJs…\"\n                                  className=\"map-search w-full pl-10\"\n-                                 style={{caret-color:\"transparent\"}}\n                                >\n                              ...\n                            ...\n                    ...\n"
+      ],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Zaylist",
+      "hasCanvas": false,
+      "bodyTextLen": 261,
+      "bodyTextHash": "9b0e5b7d6ae10aa57d1bd528bc9e058d630601891d0268930f71a05b8883b77a",
+      "bodyTextPrefix": "Loading the city… LOCATE KEY + HOME ABOUT JOIN FRI SEP 4, 9:47 P",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
