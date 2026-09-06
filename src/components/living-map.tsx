@@ -209,7 +209,11 @@ export function LivingMap() {
     } catch {
       /* ignore */
     }
-    void import("./map-canvas").then((mod) => setCanvas(() => mod.MapCanvas));
+    void import("./map-canvas")
+      .then((mod) => setCanvas(() => mod.MapCanvas))
+      .catch((err) => {
+        console.error("Map canvas failed to load", err);
+      });
   }, []);
 
   useEffect(() => {
@@ -695,7 +699,7 @@ export function LivingMap() {
       </header>
 
       <div
-        className={`view-rail z-20 ${deskOpen ? "md:right-[23.5rem]" : ""} ${
+        className={`view-rail z-[115] ${deskOpen ? "md:right-[23.5rem]" : ""} ${
           !wide && detent !== "peek" ? "hidden" : ""
         }`}
       >
@@ -1522,7 +1526,7 @@ function MobileHub({
     >
       <Drawer.Portal>
         <Drawer.Overlay className="pointer-events-none bg-transparent" />
-        <Drawer.Content className="map-sheet pointer-events-auto fixed inset-x-0 bottom-0 z-[100] flex flex-col outline-none focus-visible:ring-2 focus-visible:ring-z-lime">
+        <Drawer.Content className={`map-sheet pointer-events-auto fixed inset-x-0 bottom-0 z-[100] flex flex-col outline-none focus-visible:ring-2 focus-visible:ring-z-lime ${snap === SHEET_SNAPS[0] || snap === 116 ? "is-closed" : "is-open"}`}>
           <div className="map-sheet__grab" aria-hidden />
           <div className="mx-4 mb-3 flex items-center gap-2">
           <label className="relative min-w-0 flex-1">

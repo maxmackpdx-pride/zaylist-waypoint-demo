@@ -126,24 +126,28 @@ let arterialLoad: Promise<ArterialRow[]> | null = null;
 function loadArterials() {
   if (arterialCache) return Promise.resolve(arterialCache);
   if (arterialLoad) return arterialLoad;
-  arterialLoad = fetch("/pdx-arterials.json")
-    .then((res) => res.json())
-    .then((rows: { c: string; p: [number, number][] }[]) => {
-      arterialCache = rows.map((row) => {
-        let south = 90;
-        let north = -90;
-        let west = 180;
-        let east = -180;
-        for (const [lat, lng] of row.p) {
-          if (lat < south) south = lat;
-          if (lat > north) north = lat;
-          if (lng < west) west = lng;
-          if (lng > east) east = lng;
-        }
-        return { c: row.c, p: row.p, bb: [south, west, north, east] };
-      });
-      return arterialCache;
+  const ingest = (rows: { c: string; p: [number, number][] }[]) => {
+    arterialCache = rows.map((row) => {
+      let south = 90;
+      let north = -90;
+      let west = 180;
+      let east = -180;
+      for (const [lat, lng] of row.p) {
+        if (lat < south) south = lat;
+        if (lat > north) north = lat;
+        if (lng < west) west = lng;
+        if (lng > east) east = lng;
+      }
+      return { c: row.c, p: row.p, bb: [south, west, north, east] as [number, number, number, number] };
     });
+    return arterialCache;
+  };
+  const embedded = (globalThis as { __PDX_ARTERIALS__?: { c: string; p: [number, number][] }[] }).__PDX_ARTERIALS__;
+  arterialLoad = embedded
+    ? Promise.resolve(ingest(embedded))
+    : fetch("/pdx-arterials.json")
+        .then((res) => res.json())
+        .then((rows: { c: string; p: [number, number][] }[]) => ingest(rows));
   return arterialLoad;
 }
 

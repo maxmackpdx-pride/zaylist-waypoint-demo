@@ -38,7 +38,10 @@
   --font-mono: "Zaylist JetBrains Mono", "JetBrains Mono", ui-monospace, monospace;
   --text-2xs: 0.625rem;
   --text-2xs--line-height: 0.85rem;
-  --radius-pill: 999px;
+}
+
+:root {
+  --dock-h: calc(74px + max(0.5rem, env(safe-area-inset-bottom, 0px)));
 }
 
 @font-face {
@@ -268,10 +271,11 @@ html.calm-mode .hud-glass,
 }
 .map-panel__chrome {
   pointer-events: none;
-  position: absolute;
+  position: fixed;
   left: 12px;
-  bottom: 7.5rem;
-  z-index: 620;
+  right: auto;
+  bottom: calc(var(--dock-h) + 40px);
+  z-index: 130;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -957,12 +961,19 @@ html.calm-mode .hud-glass,
   border-radius: 14px 14px 0 0;
   border: 1px solid rgb(255 255 255 / 0.1);
   border-bottom: 0;
-  z-index: 100;
+  z-index: 100 !important;
+  padding-bottom: var(--dock-h);
   box-shadow:
     0 0 0 1px #000,
     inset 0 1px 0 rgb(255 255 255 / 0.08),
     0 -28px 40px -32px rgb(0 0 0 / 0.65);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.map-sheet.is-closed {
+  padding-bottom: 0;
+  z-index: 100 !important;
+}
+.map-sheet.is-open {
+  z-index: 110 !important;
 }
 .night-desk .pdx-glass {
   background: rgb(0 0 0 / 0.58);
@@ -1101,18 +1112,19 @@ html.calm-mode .night-desk .pdx-glass,
   align-items: center;
   min-height: 44px;
 }
-.sheet-large .map-panel__chrome,
-.sheet-half .map-panel__chrome {
-  display: none;
+.sheet-peek .map-panel__chrome,
+.sheet-half .map-panel__chrome,
+.sheet-large .map-panel__chrome {
+  z-index: 90;
 }
 .map-panel__chrome {
   pointer-events: none;
-  position: absolute;
+  position: fixed;
   left: 12px;
   right: 12px;
   top: auto;
-  bottom: calc(26vh + 10px);
-  z-index: 5;
+  bottom: calc(var(--dock-h) + 40px);
+  z-index: 130;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -1229,7 +1241,7 @@ html.calm-mode .night-desk .pdx-glass,
   inset-inline: 0;
   bottom: 0;
   top: auto;
-  z-index: 90;
+  z-index: 120;
   background: #050506;
   padding: 0 8px max(0.5rem, env(safe-area-inset-bottom));
 }
@@ -1311,16 +1323,16 @@ html.calm-mode .night-desk .pdx-glass,
 .app-dock__dim {
   position: fixed;
   inset: 0;
-  z-index: 88;
+  z-index: 140;
   border: 0;
   background: rgb(0 0 0 / 0.45);
 }
 .app-dock__sheet {
   position: fixed;
   inset-inline: 12px;
-  bottom: calc(5.6rem + env(safe-area-inset-bottom));
+  bottom: calc(var(--dock-h) + 8px);
   top: auto;
-  z-index: 89;
+  z-index: 141;
   overflow: hidden;
 }
 .app-dock__choice {
@@ -1494,11 +1506,11 @@ html.calm-mode .night-desk .pdx-glass,
 
 .view-rail {
   pointer-events: none;
-  position: absolute;
+  position: fixed;
   left: 12px;
   right: 12px;
-  bottom: calc(26vh + 4.35rem);
-  z-index: 20;
+  bottom: calc(var(--dock-h) + 72px);
+  z-index: 115;
 }
 @media (min-width: 768px) {
   .view-rail { bottom: 4.75rem; }
