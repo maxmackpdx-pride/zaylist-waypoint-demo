@@ -1,4 +1,3 @@
-import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
@@ -6,33 +5,25 @@ import tailwindcss from "@tailwindcss/vite";
 import { viteSingleFile } from "vite-plugin-singlefile";
 
 const ROOT = import.meta.dirname;
+const PIXEL = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
 
-function inlineChromeAssets(): Plugin {
-  const files: Record<string, [string, string]> = {
-    "/zaylist-wordmark.png": ["image/png", join(ROOT, "public/zaylist-wordmark.png")],
-    "/brand/zaydark.svg": ["image/svg+xml", join(ROOT, "public/brand/zaydark.svg")],
-    "/favicon.svg": ["image/svg+xml", join(ROOT, "public/favicon.svg")],
-  };
-  const table = new Map<string, string>();
+function stripDemoImages(): Plugin {
   return {
-    name: "zaylist-inline-chrome",
-    buildStart() {
-      for (const [url, [mime, file]] of Object.entries(files)) {
-        table.set(url, `data:${mime};base64,${readFileSync(file).toString("base64")}`);
-      }
-    },
+    name: "zaylist-strip-demo-images",
     generateBundle(_opts, bundle) {
-      const paths = [...table.keys()].sort((a, b) => b.length - a.length);
+      const paths = /(?:\/demo\/|\/brand\/)[^"' )\s]+/g;
       for (const item of Object.values(bundle)) {
-        if (item.type !== "chunk") continue;
-        for (const path of paths) item.code = item.code.split(path).join(table.get(path)!);
+        if (item.type === "chunk") item.code = item.code.replace(paths, PIXEL);
+        else if (item.type === "asset" && typeof item.source === "string") {
+          item.source = item.source.replace(paths, PIXEL);
+        }
       }
     },
   };
 }
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), inlineChromeAssets(), viteSingleFile()],
+  plugins: [react(), tailwindcss(), stripDemoImages(), viteSingleFile()],
   resolve: {
     alias: {
       "@": join(ROOT, "src"),
@@ -46,7 +37,7 @@ export default defineConfig({
   build: {
     outDir: join(ROOT, "dist-offline"),
     emptyOutDir: true,
-    assetsInlineLimit: 400_000,
+    assetsInlineLimit: 200_000,
     cssCodeSplit: false,
     modulePreload: false,
     rollupOptions: {
