@@ -11,7 +11,7 @@ This is the demo. **Not** `pdx-pride-guide`. Do not move files into another repo
 
 **Local only.** `npm install` then `npm run dev`. No Vercel, Docker, CI, hosting, or production rewrite.
 
-Read: `README.md`, `AGENTS.md`, `specimen/index.html`. Then the files you will touch.
+Read: `MAP-PROMPT.md` (full product), then `README.md`, `AGENTS.md`, `specimen/index.html`. Then the files you will touch.
 
 **Offline HTML reference:** `zaylist-offline.html` in the repo root. Open the **file**, not the GitHub `/blob/` page. The blob page is GitHub chrome around source. If you “download” that page you get GitHub’s HTML, not the demo. Use:
 
