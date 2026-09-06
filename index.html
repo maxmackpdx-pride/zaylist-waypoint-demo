@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Zaylist waypoints</title>
+<style>html,body{margin:0;background:#000;color:#888;font:14px sans-serif}</style>
+</head>
+<body>
+<p id="s">Loading specimen…</p>
+<script>
+(async () => {
+  const n = 7;
+  const parts = [];
+  for (let i = 0; i < n; i++) {
+    const name = 'chunks/p' + String(i).padStart(2,'0') + '.txt';
+    const res = await fetch(name);
+    if (!res.ok) throw new Error(name);
+    parts.push(await res.text());
+  }
+  document.open();
+  document.write(parts.join(''));
+  document.close();
+})().catch((e) => {
+  document.getElementById('s').textContent = 'Load failed: ' + e.message;
+});
+</script>
+</body>
+</html>
