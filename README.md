@@ -2,9 +2,18 @@
 
 Portland / Vancouver metro. **The map is the product.** Eventz, Placez, the boards (AfterZ, ZeneGade, Mizzed, Carpool, Gigz, Sells, Giftz), and ZayDark sit on it. Not a directory with a map widget.
 
-**Repo:** https://github.com/maxmackpdx-pride/zaylist-waypoint-demo
+**Offline HTML:** [zaylist-offline.html](zaylist-offline.html) — one file.
 
-This export is the working demo we built: living map, hub rails, feed composer, alerts contract, ZayDark Looking, waypoint family, profile event rails, nearby place cards.
+**Do not open the GitHub blob/code page and call that the demo.** `github.com/.../blob/main/zaylist-offline.html` is GitHub’s wrapper. That is not the app.
+
+Open it as HTML:
+
+- Local: download the raw file, double-click it, or `open zaylist-offline.html`
+- Raw file: https://raw.githubusercontent.com/maxmackpdx-pride/zaylist-waypoint-demo/main/zaylist-offline.html
+- Runnable in a tab: https://raw.githack.com/maxmackpdx-pride/zaylist-waypoint-demo/main/zaylist-offline.html
+
+App, hub, waypoints, fonts are inlined. Map tiles still come from Carto (needs internet). Demo photos are not packed. Rebuild: `npm run build:offline`.
+
 
 ---
 

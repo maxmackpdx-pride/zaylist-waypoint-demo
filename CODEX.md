@@ -13,6 +13,14 @@ This is the demo. **Not** `pdx-pride-guide`. Do not move files into another repo
 
 Read: `README.md`, `AGENTS.md`, `specimen/index.html`. Then the files you will touch.
 
+**Offline HTML reference:** `zaylist-offline.html` in the repo root. Open the **file**, not the GitHub `/blob/` page. The blob page is GitHub chrome around source. If you “download” that page you get GitHub’s HTML, not the demo. Use:
+
+- `open zaylist-offline.html` after clone
+- or https://raw.githack.com/maxmackpdx-pride/zaylist-waypoint-demo/main/zaylist-offline.html
+
+Do not scrape a GitHub code page and treat it as the design.
+
+
 ## Override rule
 
 **My ask in this repo overrides Foundation.** Tokens/type/glass/cards from Foundation. If they disagree with README, specimen, or what I just said — follow me.
