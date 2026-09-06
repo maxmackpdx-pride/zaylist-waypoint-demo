@@ -686,7 +686,7 @@ export function LivingMap() {
         }}
       />
 
-      <header className="pointer-events-none absolute inset-x-0 z-20 px-3 md:px-4" style={{ top: "calc(3.5rem + env(safe-area-inset-top))" }}>
+      <header className="pointer-events-none absolute inset-x-0 z-20 px-3 md:px-4" style={{ top: "calc(var(--header-h) + 8px)" }}>
         <div className="pointer-events-auto mx-auto flex max-w-7xl items-center gap-3">
           <p
             className="map-clock font-display text-[14px] font-bold tracking-wide"
@@ -1291,7 +1291,7 @@ function NightDesk({
       >
         HUB
       </button>
-      <aside className={`night-desk pointer-events-none absolute bottom-3 right-3 top-[5.75rem] z-20 hidden md:block ${open ? "is-open" : ""}`}>
+      <aside className={`night-desk pointer-events-none absolute bottom-3 right-3 z-20 hidden md:block ${open ? "is-open" : ""}`}>
         <div className="pointer-events-auto h-full pdx-glass pdx-glass-rebind" style={{ ["--c" as string]: "var(--color-z-cyan)" }}>
           <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-[inherit]">
             <div className="flex items-center gap-2 px-4 pt-4">
