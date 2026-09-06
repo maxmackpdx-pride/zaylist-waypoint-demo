@@ -1,59 +1,54 @@
 # Codex prompt — local only
 
-Copy everything below the line into Codex (local, this repo). Do not add cloud, Vercel, or deploy steps.
+Copy everything below the line into Codex. If Codex already wrecked scale, chrome, or routes: **`git checkout -- .` then start from this prompt.** Do not keep the broken tree and “fix around it.”
 
 ---
 
 You are continuing **Zaylist living map** on my machine.
 
-**Repo (already cloned or clone it):** https://github.com/maxmackpdx-pride/zaylist-waypoint-demo  
-**Work local only.** `npm install` then `npm run dev`. Do not add Vercel, Docker, CI, hosting, env clouds, or rewrite the app for production deploy. Do not change the Foundation library repo. Do not invent a second app.
+**Repo:** https://github.com/maxmackpdx-pride/zaylist-waypoint-demo  
+This is the demo. **Not** `pdx-pride-guide`. Do not move files into another repo. Do not invent production APIs, auth, or deep links. Mock data in `src/lib/map-data.ts` is the data.
 
-Read in this order: `README.md`, `AGENTS.md`, `public/waypoint-specimen.html` (or `specimen/index.html`). Then the files you are about to touch.
+**Local only.** `npm install` then `npm run dev`. No Vercel, Docker, CI, hosting, or production rewrite.
+
+Read: `README.md`, `AGENTS.md`, `specimen/index.html`. Then the files you will touch.
 
 ## Override rule
 
-**My ask in this repo overrides Foundation.**  
-`zaylist-foundation-library` is tokens, type, glass, card anatomy. If Foundation or an old guide disagrees with README, AGENTS, specimen, or what I just asked — **follow me / this demo.** Do not “correct” shipped UI back to an older Foundation pattern.
+**My ask in this repo overrides Foundation.** Tokens/type/glass/cards from Foundation. If they disagree with README, specimen, or what I just said — follow me.
 
-## What this product is
+## What this page is
 
-Portland / Vancouver living map. The map is the product. Eventz, Placez, boards (AfterZ, ZeneGade, Mizzed, Carpool, Gigz, Sells, Giftz), and ZayDark sit on it. Dark OLED. Barlow + Barlow Condensed + JetBrains Mono (self-hosted `@fontsource`).
+The living map **is the product**. In this demo it is the **index route `/`**. It is not a marketing homepage, not `/map`, not a widget on another page.
 
-Two worlds: vanilla Zaylist and ZayDark. They never share notification channels or lock-screen copy. No race. Metro only. Age search starts at **18**.
+It already has the site shell:
+
+- **Top:** `SiteHeader` (wordmark, Home / Eventz / Placez / Outz / Z/ Communities, search, alerts, Join). That is the navbar. Do not shrink it. Do not replace it. Do not add a second header.
+- **Mobile bottom:** `AppDock` (Eventz, Placez, Hub pin, Z/List, Messages). That is the mobile nav / footer. Do not add a site footer under the map. The map stays full-viewport between header and dock.
+- **Desktop hub:** `NightDesk` — right-side drawer, not a full-page grid.
+- **Mobile hub:** Vaul `MobileHub` bottom sheet, snaps `[116, 0.34, 0.52, 0.88]`, sitting on the dock. Handle visible when closed. LOCATE / KEY / + sit on the handle when closed, **behind** the sheet when the sheet or Z/List is open.
+
+Do **not** change `html { font-size }`, zoom, `transform: scale`, 106%, 112.5%, or any global scale. If type looks small, you are in the wrong file or you broke tokens. Revert. Waypoints stay **24 / 32 / 44**.
 
 ## Already built — do not redo
 
-- Leaflet living map, hub drawer / mobile sheet, search (text must not run under the icon).
-- Waypoints: one SVG shell (beacon + pointer + scoop + glyph + glow). Scoop time **white** through the overlap. Sizes **24 / 32 / 44**. Slow glow pulse, 50% bloom. Leaflet `divIcon`, tip on lat/lng. Faces are avatars, not pins (Leaflet img override).
-- Event **profile-rail** cards in Soon/later: landscape, day neon, color posters (no grayscale-to-color), titles stay on hover, kicker `THU 10P · HOOD`.
-- Nearby Placez: deep glass, poster well, category pill, two-line name, Directory / distance footer, same snap width as Soon. LTR rails, not RTL.
-- Feed composer with stash/undo, back out.
-- `/alerts` settings UI = notification contract. Push is not server-wired.
-- ZayDark Looking / hosting / stealth fields in client state.
-
-Canonical waypoint factory: `src/lib/waypoints.ts`. If you change geometry, update `specimen/index.html` and `public/waypoint-specimen.html` in the same change. Specimen stays **one file** (no `fetch` chunks).
+Leaflet map, hub drawer, search, waypoints (white scoop time), event profile-rails, nearby place cards, feed composer, `/alerts`, ZayDark Looking. Factory: `src/lib/waypoints.ts`. Geometry changes update `specimen/index.html` in the same diff. Specimen stays one file.
 
 ## How to work
 
-- Reuse existing components, tokens, spacing, naming (`pdx-glass`, `--c`, `font-display`, `zaylist-card-system` rules already in the rails).
-- Cover loading / empty / error / long content on any surface you touch.
-- Check light is not a thing here — this product is OLED dark. Calm / `prefers-reduced-motion` still matters (no pulse, no bloom theater).
-- After edits: `npm run typecheck`. Keep `npm run dev` working. Do not break the map.
+Reuse existing components and tokens. After edits: `npm run typecheck`. Keep `npm run dev` on **8080**. Smallest change.
 
 ## Do not
 
-- Google/Mapbox teardrop pins or emoji pins.
-- Put hour as a caption under the pin.
-- Fill scoop text with black / `currentColor`.
-- Pulse the whole marker. Pulse glow stroke opacity only.
+- Touch `html`/`body` font-size or any global scale.
+- Add `site-footer` under the map, or a marketing homepage, or a `/map` route.
+- Move this into pdx-pride-guide or any other repo.
+- Wire real APIs, auth, or production deeplinks unless I ask.
+- Google/Mapbox teardrop pins. Black scoop time. Pulse the whole marker.
 - Grayscale hover on event rails.
 - Shared vanilla/ZayDark push copy.
-- Touch navigation chrome unless I ask.
-- Hand-edit `src/ds/*` unless I ask (Foundation-vendored). Prefer `src/styles.css` for app chrome.
+- Hand-edit `src/ds/*` unless I ask.
 
 ## If I have not named a task
 
-Stop after you have the repo running locally and confirm the map + hub + specimen. Wait for my next ask.
-
-If I named a task, do only that. Smallest change. Match what is already on brand.
+Get `npm run dev` running. Confirm map + header + dock + hub. Then **stop**.
