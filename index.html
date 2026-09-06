@@ -2,27 +2,48 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Zaylist waypoints</title>
-<style>html,body{margin:0;background:#000;color:#888;font:14px sans-serif}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
+<style>
+  :root { --bg:#050506; --fg:#eee; --muted:#8a8a8a; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; background:var(--bg); color:var(--fg); font-family:"Barlow Condensed", "Arial Narrow", sans-serif; }
+  body { padding: 28px 22px 80px; }
+  h1 { margin:0; font-size: clamp(2rem, 6vw, 3.4rem); letter-spacing:-.03em; text-transform:uppercase; line-height:.9; }
+  .kicker { font-family:"JetBrains Mono", ui-monospace, monospace; font-size:11px; letter-spacing:.22em; color:#00ffff; text-transform:uppercase; margin-bottom:10px; }
+  .lede { max-width: 42rem; color:var(--muted); font-family: system-ui, sans-serif; font-size:14px; line-height:1.5; margin: 12px 0 28px; }
+  section { margin: 36px 0; }
+  h2 { margin:0 0 14px; font-size:1.15rem; letter-spacing:.16em; text-transform:uppercase; color:#ccff00; }
+  .row { display:flex; flex-wrap:wrap; gap: 28px 22px; align-items:flex-end; }
+  .cell { display:flex; flex-direction:column; align-items:center; gap:8px; min-width:72px; }
+  .cell b { font-family:"JetBrains Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.14em; color:var(--muted); font-weight:500; text-transform:uppercase; }
+  .board { background:#0a0a0c; border:1px solid #222; border-radius:18px; padding:22px 18px 16px; }
+  .wp { line-height:0; transform-origin:50% 100%; }
+  .wp-svg { display:block; overflow:visible; }
+  .wp-glow-ring { opacity:.28; animation: wp-glow 3.8s ease-in-out infinite; }
+  .wp.is-selected .wp-glow-ring { opacity:.45; }
+  @keyframes wp-glow { 0%,100%{opacity:.18} 50%{opacity:.42} }
+  @media (prefers-reduced-motion: reduce) {
+    .wp-glow-ring { animation:none; opacity:.22; }
+  }
+  .note { font-family: system-ui, sans-serif; font-size:13px; color:var(--muted); max-width:40rem; }
+</style>
 </head>
 <body>
-<p id="s">Loading specimen…</p>
-<script>
-(async () => {
-  const n = 7;
-  const parts = [];
-  for (let i = 0; i < n; i++) {
-    const name = 'chunks/p' + String(i).padStart(2,'0') + '.txt';
-    const res = await fetch(name);
-    if (!res.ok) throw new Error(name);
-    parts.push(await res.text());
-  }
-  document.open();
-  document.write(parts.join(''));
-  document.close();
-})().catch((e) => {
-  document.getElementById('s').textContent = 'Load failed: ' + e.message;
-});
-</script>
+  <p class="kicker">Zaylist · map contract</p>
+  <h1>Waypoint family</h1>
+  <p class="lede">One SVG shell. Beacon, pointer, optional scoop, white glyph, slow glow. Time lives in the overlapping disc and stays white. This page is the specimen. If the map disagrees, this page wins.</p>
+  <section><h2>Sizes · 24 / 32 / 44</h2><div class="board"><div class="row" id="sizes"></div></div><p class="note">Rest zoom under 16 = 24. Rest zoom 16+ = 32. Selected = 44. Pointer tips sit on one baseline.</p></section>
+  <section><h2>Scoop · time overlap</h2><div class="board"><div class="row" id="scoops"></div></div><p class="note">Scoop is a second circle, not a caption. Fill black, stroke accent, type white. Overlap must still read as two discs.</p></section>
+  <section><h2>Eventz · day color</h2><div class="board"><div class="row" id="days"></div></div></section>
+  <section><h2>18+ / sex-positive</h2><div class="board"><div class="row" id="plus"></div></div></section>
+  <section><h2>Placez</h2><div class="board"><div class="row" id="places"></div></div></section>
+  <section><h2>Boards</h2><div class="board"><div class="row" id="boards"></div></div></section>
+  <section><h2>ZayDark hosting</h2><div class="board"><div class="row" id="hosts"></div></div><p class="note">Same shell. Always #ff2400. Glyph is the room, not the person. Faces are a different layer.</p></section>
+  <section><h2>Venue bloom</h2><div class="board"><div class="row" id="bloom"></div></div></section>
+<script src="./waypoint-demo.js"></script>
 </body>
 </html>
