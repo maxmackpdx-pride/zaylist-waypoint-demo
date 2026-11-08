@@ -44,7 +44,7 @@ A dark OLED map of PDX. Pins are **waypoints**, not avatars (avatars are people 
 
 | Surface | Behavior |
 |---|---|
-| Map | Leaflet, vector-ish dark basemap, waypoint `divIcon`, selected = 44px. Faces stay in avatar boxes (Leaflet img override). |
+| Map | Dark basemap, custom waypoints, selected = 44px. The shared Mapz renderer is the target architecture; verify production integration before retiring the existing canvas. |
 | Search | Hub field. Results truncate. Age floor 18 on Looking sliders. |
 | Soon rail | LTR snap. `event-card-profile-rail`. Kicker `THU 10P · HOOD`. |
 | Nearby Placez | Same rail width. Category accent glass, poster well, two-line name. |
@@ -66,7 +66,7 @@ htmlpreview: https://htmlpreview.github.io/?https://github.com/maxmackpdx-pride/
 ### Layout
 
 - `src/components/living-map.tsx` — shell, hub, search, rails
-- `src/components/map-canvas.tsx` — Leaflet
+- `src/components/map-canvas.tsx` — existing map canvas pending shared Mapz integration
 - `src/lib/waypoints.ts` — factory
 - `src/lib/zaydark.ts` + `src/components/zaydark.tsx` — ZayDark
 - `src/components/event-card.tsx` — EventRailCard / EventCard
